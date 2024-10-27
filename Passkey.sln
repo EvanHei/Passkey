@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasskeyLibrary", "PasskeyLibrary\PasskeyLibrary.csproj", "{557E5F1B-95A2-4A41-9E58-B25A1B448470}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsUI", "WinFormsUI\WinFormsUI.csproj", "{FF39D602-AE27-4CC3-BF2F-284F12F6C885}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{557E5F1B-95A2-4A41-9E58-B25A1B448470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{557E5F1B-95A2-4A41-9E58-B25A1B448470}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{557E5F1B-95A2-4A41-9E58-B25A1B448470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF39D602-AE27-4CC3-BF2F-284F12F6C885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF39D602-AE27-4CC3-BF2F-284F12F6C885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF39D602-AE27-4CC3-BF2F-284F12F6C885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF39D602-AE27-4CC3-BF2F-284F12F6C885}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
