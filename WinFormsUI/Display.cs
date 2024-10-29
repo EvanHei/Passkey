@@ -106,6 +106,13 @@ namespace WinFormsUI
             DeriverTryComputeKey();
         }
 
+        private void DeriverPanel_RefreshLabel_Click(object sender, EventArgs e)
+        {
+            salt = KeyDeriver.GenerateSalt();
+            DeriverPanel_SaltValueTextBox.Text = BitConverter.ToString(salt).Replace("-", "");
+            DeriverTryComputeKey();
+        }
+
         private void DeriverPanel_Pbkdf2ClipboardLabel_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(DeriverPanel_Pbkdf2ValueTextBox.Text))

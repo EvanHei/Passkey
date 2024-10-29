@@ -50,6 +50,7 @@
             GeneratePanel_AsymmetricRadioButton = new RadioButton();
             GeneratePanel_SymmetricRadioButton = new RadioButton();
             SymmetricPanel = new Panel();
+            SymmetricPanel_RefreshLabel = new Label();
             SymmetricPanel_KeyValueTextBox = new TextBox();
             SymmetricPanel_KeyClipboardLabel = new Label();
             SymmetricPanel_KeyLabel = new Label();
@@ -63,7 +64,7 @@
             AsymmetricPanel_PublicKeyClipboardLabel = new Label();
             AsymmetricPanel_PrivateKeyLabel = new Label();
             AsymmetricPanel_PublicKeyLabel = new Label();
-            SymmetricPanel_RefreshLabel = new Label();
+            DeriverPanel_RefreshLabel = new Label();
             MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DeriverPanel_LengthTrackBar).BeginInit();
             DeriverPanel.SuspendLayout();
@@ -144,7 +145,7 @@
             DeriverPanel_LengthTrackBar.TabIndex = 3;
             DeriverPanel_LengthTrackBar.TickFrequency = 32;
             DeriverPanel_LengthTrackBar.TickStyle = TickStyle.None;
-            DeriverPanel_LengthTrackBar.Value = 256;
+            DeriverPanel_LengthTrackBar.Value = 32;
             DeriverPanel_LengthTrackBar.Scroll += DeriverPanel_LengthTrackBar_Scroll;
             // 
             // DeriverPanel_Pbkdf2Label
@@ -161,7 +162,7 @@
             // 
             DeriverPanel_SaltCheckBox.AutoSize = true;
             DeriverPanel_SaltCheckBox.ForeColor = SystemColors.ButtonFace;
-            DeriverPanel_SaltCheckBox.Location = new Point(232, 187);
+            DeriverPanel_SaltCheckBox.Location = new Point(232, 177);
             DeriverPanel_SaltCheckBox.Name = "DeriverPanel_SaltCheckBox";
             DeriverPanel_SaltCheckBox.Size = new Size(50, 23);
             DeriverPanel_SaltCheckBox.TabIndex = 5;
@@ -178,7 +179,7 @@
             DeriverPanel_KeyLengthTextBox.Name = "DeriverPanel_KeyLengthTextBox";
             DeriverPanel_KeyLengthTextBox.Size = new Size(40, 25);
             DeriverPanel_KeyLengthTextBox.TabIndex = 7;
-            DeriverPanel_KeyLengthTextBox.Text = "256";
+            DeriverPanel_KeyLengthTextBox.Text = "32";
             DeriverPanel_KeyLengthTextBox.TextAlign = HorizontalAlignment.Right;
             DeriverPanel_KeyLengthTextBox.TextChanged += DeriverPanel_KeyLengthTextBox_TextChanged;
             // 
@@ -270,6 +271,7 @@
             // 
             // DeriverPanel
             // 
+            DeriverPanel.Controls.Add(DeriverPanel_RefreshLabel);
             DeriverPanel.Controls.Add(DeriverPanel_PasswordLabel);
             DeriverPanel.Controls.Add(DeriverPanel_SaltValueTextBox);
             DeriverPanel.Controls.Add(DeriverPanel_PasswordTextBox);
@@ -340,6 +342,19 @@
             SymmetricPanel.Size = new Size(297, 292);
             SymmetricPanel.TabIndex = 21;
             // 
+            // SymmetricPanel_RefreshLabel
+            // 
+            SymmetricPanel_RefreshLabel.AutoSize = true;
+            SymmetricPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
+            SymmetricPanel_RefreshLabel.Location = new Point(255, 94);
+            SymmetricPanel_RefreshLabel.Name = "SymmetricPanel_RefreshLabel";
+            SymmetricPanel_RefreshLabel.Size = new Size(28, 19);
+            SymmetricPanel_RefreshLabel.TabIndex = 20;
+            SymmetricPanel_RefreshLabel.Text = "🔄";
+            SymmetricPanel_RefreshLabel.Click += SymmetricPanel_RefreshLabel_Click;
+            SymmetricPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
+            SymmetricPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
+            // 
             // SymmetricPanel_KeyValueTextBox
             // 
             SymmetricPanel_KeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
@@ -395,7 +410,7 @@
             SymmetricPanel_KeyLengthTextBox.Name = "SymmetricPanel_KeyLengthTextBox";
             SymmetricPanel_KeyLengthTextBox.Size = new Size(40, 25);
             SymmetricPanel_KeyLengthTextBox.TabIndex = 10;
-            SymmetricPanel_KeyLengthTextBox.Text = "256";
+            SymmetricPanel_KeyLengthTextBox.Text = "32";
             SymmetricPanel_KeyLengthTextBox.TextAlign = HorizontalAlignment.Right;
             SymmetricPanel_KeyLengthTextBox.TextChanged += SymmetricPanel_KeyLengthTextBox_TextChanged;
             // 
@@ -409,7 +424,7 @@
             SymmetricPanel_LengthTrackBar.TabIndex = 8;
             SymmetricPanel_LengthTrackBar.TickFrequency = 32;
             SymmetricPanel_LengthTrackBar.TickStyle = TickStyle.None;
-            SymmetricPanel_LengthTrackBar.Value = 256;
+            SymmetricPanel_LengthTrackBar.Value = 32;
             SymmetricPanel_LengthTrackBar.Scroll += SymmetricPanel_LengthTrackBar_Scroll;
             // 
             // AsymmetricPanel
@@ -491,18 +506,18 @@
             AsymmetricPanel_PublicKeyLabel.TabIndex = 14;
             AsymmetricPanel_PublicKeyLabel.Text = "Public:";
             // 
-            // SymmetricPanel_RefreshLabel
+            // DeriverPanel_RefreshLabel
             // 
-            SymmetricPanel_RefreshLabel.AutoSize = true;
-            SymmetricPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_RefreshLabel.Location = new Point(255, 94);
-            SymmetricPanel_RefreshLabel.Name = "SymmetricPanel_RefreshLabel";
-            SymmetricPanel_RefreshLabel.Size = new Size(28, 19);
-            SymmetricPanel_RefreshLabel.TabIndex = 20;
-            SymmetricPanel_RefreshLabel.Text = "🔄";
-            SymmetricPanel_RefreshLabel.Click += SymmetricPanel_RefreshLabel_Click;
-            SymmetricPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
-            SymmetricPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
+            DeriverPanel_RefreshLabel.AutoSize = true;
+            DeriverPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
+            DeriverPanel_RefreshLabel.Location = new Point(256, 203);
+            DeriverPanel_RefreshLabel.Name = "DeriverPanel_RefreshLabel";
+            DeriverPanel_RefreshLabel.Size = new Size(28, 19);
+            DeriverPanel_RefreshLabel.TabIndex = 21;
+            DeriverPanel_RefreshLabel.Text = "🔄";
+            DeriverPanel_RefreshLabel.Click += DeriverPanel_RefreshLabel_Click;
+            DeriverPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
+            DeriverPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
             // 
             // Display
             // 
@@ -511,8 +526,8 @@
             BackColor = Color.FromArgb(32, 32, 32);
             ClientSize = new Size(298, 414);
             Controls.Add(MenuStrip);
-            Controls.Add(GeneratorPanel);
             Controls.Add(DeriverPanel);
+            Controls.Add(GeneratorPanel);
             Font = new Font("Segoe UI Emoji", 10F);
             MainMenuStrip = MenuStrip;
             Name = "Display";
@@ -572,5 +587,6 @@
         private Label SymmetricPanel_KeyClipboardLabel;
         private Label SymmetricPanel_KeyLabel;
         private Label SymmetricPanel_RefreshLabel;
+        private Label DeriverPanel_RefreshLabel;
     }
 }
