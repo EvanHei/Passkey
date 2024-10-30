@@ -365,7 +365,7 @@
             // 
             SymmetricPanel_RefreshLabel.AutoSize = true;
             SymmetricPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_RefreshLabel.Location = new Point(255, 94);
+            SymmetricPanel_RefreshLabel.Location = new Point(254, 80);
             SymmetricPanel_RefreshLabel.Name = "SymmetricPanel_RefreshLabel";
             SymmetricPanel_RefreshLabel.Size = new Size(28, 19);
             SymmetricPanel_RefreshLabel.TabIndex = 20;
@@ -379,7 +379,7 @@
             SymmetricPanel_KeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
             SymmetricPanel_KeyValueTextBox.BorderStyle = BorderStyle.FixedSingle;
             SymmetricPanel_KeyValueTextBox.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyValueTextBox.Location = new Point(114, 157);
+            SymmetricPanel_KeyValueTextBox.Location = new Point(115, 185);
             SymmetricPanel_KeyValueTextBox.Multiline = true;
             SymmetricPanel_KeyValueTextBox.Name = "SymmetricPanel_KeyValueTextBox";
             SymmetricPanel_KeyValueTextBox.ReadOnly = true;
@@ -392,7 +392,7 @@
             // 
             SymmetricPanel_KeyClipboardLabel.AutoSize = true;
             SymmetricPanel_KeyClipboardLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyClipboardLabel.Location = new Point(18, 160);
+            SymmetricPanel_KeyClipboardLabel.Location = new Point(19, 188);
             SymmetricPanel_KeyClipboardLabel.Name = "SymmetricPanel_KeyClipboardLabel";
             SymmetricPanel_KeyClipboardLabel.Size = new Size(25, 19);
             SymmetricPanel_KeyClipboardLabel.TabIndex = 18;
@@ -405,7 +405,7 @@
             // 
             SymmetricPanel_KeyLabel.AutoSize = true;
             SymmetricPanel_KeyLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyLabel.Location = new Point(44, 160);
+            SymmetricPanel_KeyLabel.Location = new Point(45, 188);
             SymmetricPanel_KeyLabel.Name = "SymmetricPanel_KeyLabel";
             SymmetricPanel_KeyLabel.Size = new Size(34, 19);
             SymmetricPanel_KeyLabel.TabIndex = 17;
@@ -415,7 +415,7 @@
             // 
             SymmetricPanel_KeyLengthLabel.AutoSize = true;
             SymmetricPanel_KeyLengthLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyLengthLabel.Location = new Point(16, 42);
+            SymmetricPanel_KeyLengthLabel.Location = new Point(15, 28);
             SymmetricPanel_KeyLengthLabel.Name = "SymmetricPanel_KeyLengthLabel";
             SymmetricPanel_KeyLengthLabel.Size = new Size(138, 19);
             SymmetricPanel_KeyLengthLabel.TabIndex = 9;
@@ -426,7 +426,7 @@
             SymmetricPanel_KeyLengthTextBox.BackColor = Color.FromArgb(32, 32, 32);
             SymmetricPanel_KeyLengthTextBox.BorderStyle = BorderStyle.FixedSingle;
             SymmetricPanel_KeyLengthTextBox.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyLengthTextBox.Location = new Point(243, 39);
+            SymmetricPanel_KeyLengthTextBox.Location = new Point(242, 25);
             SymmetricPanel_KeyLengthTextBox.Name = "SymmetricPanel_KeyLengthTextBox";
             SymmetricPanel_KeyLengthTextBox.Size = new Size(40, 25);
             SymmetricPanel_KeyLengthTextBox.TabIndex = 10;
@@ -436,7 +436,7 @@
             // 
             // SymmetricPanel_LengthTrackBar
             // 
-            SymmetricPanel_LengthTrackBar.Location = new Point(12, 68);
+            SymmetricPanel_LengthTrackBar.Location = new Point(11, 54);
             SymmetricPanel_LengthTrackBar.Maximum = 512;
             SymmetricPanel_LengthTrackBar.Minimum = 1;
             SymmetricPanel_LengthTrackBar.Name = "SymmetricPanel_LengthTrackBar";
@@ -490,7 +490,7 @@
             AsymmetricPanel_PrivateKeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
             AsymmetricPanel_PrivateKeyValueTextBox.BorderStyle = BorderStyle.FixedSingle;
             AsymmetricPanel_PrivateKeyValueTextBox.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PrivateKeyValueTextBox.Location = new Point(112, 223);
+            AsymmetricPanel_PrivateKeyValueTextBox.Location = new Point(115, 237);
             AsymmetricPanel_PrivateKeyValueTextBox.Multiline = true;
             AsymmetricPanel_PrivateKeyValueTextBox.Name = "AsymmetricPanel_PrivateKeyValueTextBox";
             AsymmetricPanel_PrivateKeyValueTextBox.ReadOnly = true;
@@ -518,7 +518,7 @@
             AsymmetricPanel_PublicKeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
             AsymmetricPanel_PublicKeyValueTextBox.BorderStyle = BorderStyle.FixedSingle;
             AsymmetricPanel_PublicKeyValueTextBox.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PublicKeyValueTextBox.Location = new Point(112, 171);
+            AsymmetricPanel_PublicKeyValueTextBox.Location = new Point(115, 185);
             AsymmetricPanel_PublicKeyValueTextBox.Multiline = true;
             AsymmetricPanel_PublicKeyValueTextBox.Name = "AsymmetricPanel_PublicKeyValueTextBox";
             AsymmetricPanel_PublicKeyValueTextBox.ReadOnly = true;
@@ -531,7 +531,7 @@
             // 
             AsymmetricPanel_PrivateKeyClipboardLabel.AutoSize = true;
             AsymmetricPanel_PrivateKeyClipboardLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PrivateKeyClipboardLabel.Location = new Point(16, 226);
+            AsymmetricPanel_PrivateKeyClipboardLabel.Location = new Point(19, 240);
             AsymmetricPanel_PrivateKeyClipboardLabel.Name = "AsymmetricPanel_PrivateKeyClipboardLabel";
             AsymmetricPanel_PrivateKeyClipboardLabel.Size = new Size(25, 19);
             AsymmetricPanel_PrivateKeyClipboardLabel.TabIndex = 18;
@@ -544,7 +544,7 @@
             // 
             AsymmetricPanel_PublicKeyClipboardLabel.AutoSize = true;
             AsymmetricPanel_PublicKeyClipboardLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PublicKeyClipboardLabel.Location = new Point(16, 174);
+            AsymmetricPanel_PublicKeyClipboardLabel.Location = new Point(19, 188);
             AsymmetricPanel_PublicKeyClipboardLabel.Name = "AsymmetricPanel_PublicKeyClipboardLabel";
             AsymmetricPanel_PublicKeyClipboardLabel.Size = new Size(25, 19);
             AsymmetricPanel_PublicKeyClipboardLabel.TabIndex = 15;
@@ -557,7 +557,7 @@
             // 
             AsymmetricPanel_PrivateKeyLabel.AutoSize = true;
             AsymmetricPanel_PrivateKeyLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PrivateKeyLabel.Location = new Point(42, 226);
+            AsymmetricPanel_PrivateKeyLabel.Location = new Point(45, 240);
             AsymmetricPanel_PrivateKeyLabel.Name = "AsymmetricPanel_PrivateKeyLabel";
             AsymmetricPanel_PrivateKeyLabel.Size = new Size(54, 19);
             AsymmetricPanel_PrivateKeyLabel.TabIndex = 17;
@@ -567,7 +567,7 @@
             // 
             AsymmetricPanel_PublicKeyLabel.AutoSize = true;
             AsymmetricPanel_PublicKeyLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PublicKeyLabel.Location = new Point(42, 174);
+            AsymmetricPanel_PublicKeyLabel.Location = new Point(45, 188);
             AsymmetricPanel_PublicKeyLabel.Name = "AsymmetricPanel_PublicKeyLabel";
             AsymmetricPanel_PublicKeyLabel.Size = new Size(48, 19);
             AsymmetricPanel_PublicKeyLabel.TabIndex = 14;
@@ -580,8 +580,8 @@
             BackColor = Color.FromArgb(32, 32, 32);
             ClientSize = new Size(298, 414);
             Controls.Add(MenuStrip);
-            Controls.Add(GeneratorPanel);
             Controls.Add(DeriverPanel);
+            Controls.Add(GeneratorPanel);
             Font = new Font("Segoe UI Emoji", 10F);
             MainMenuStrip = MenuStrip;
             Name = "Display";
