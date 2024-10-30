@@ -311,5 +311,10 @@ namespace WinFormsUI
 
             Clipboard.SetText(AsymmetricPanel_PrivateKeyValueTextBox.Text);
         }
+
+        private void AsymmetricPanel_RefreshLabel_Click(object sender, EventArgs e)
+        {
+            AsymmetricTryComputeKey();
+        }
     }
 }

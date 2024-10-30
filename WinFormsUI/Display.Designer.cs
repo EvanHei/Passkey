@@ -50,15 +50,8 @@
             GeneratorPanel = new Panel();
             GeneratePanel_AsymmetricRadioButton = new RadioButton();
             GeneratePanel_SymmetricRadioButton = new RadioButton();
-            SymmetricPanel = new Panel();
-            SymmetricPanel_RefreshLabel = new Label();
-            SymmetricPanel_KeyValueTextBox = new TextBox();
-            SymmetricPanel_KeyClipboardLabel = new Label();
-            SymmetricPanel_KeyLabel = new Label();
-            SymmetricPanel_KeyLengthLabel = new Label();
-            SymmetricPanel_KeyLengthTextBox = new TextBox();
-            SymmetricPanel_LengthTrackBar = new TrackBar();
             AsymmetricPanel = new Panel();
+            AsymmetricPanel_RefreshLabel = new Label();
             AsymmetricPanel_InfoLabel = new Label();
             AsymmetricPanel_EcdsaRadioButton = new RadioButton();
             AsymmetricPanel_PrivateKeyValueTextBox = new TextBox();
@@ -68,13 +61,21 @@
             AsymmetricPanel_PublicKeyClipboardLabel = new Label();
             AsymmetricPanel_PrivateKeyLabel = new Label();
             AsymmetricPanel_PublicKeyLabel = new Label();
+            SymmetricPanel = new Panel();
+            SymmetricPanel_RefreshLabel = new Label();
+            SymmetricPanel_KeyValueTextBox = new TextBox();
+            SymmetricPanel_KeyClipboardLabel = new Label();
+            SymmetricPanel_KeyLabel = new Label();
+            SymmetricPanel_KeyLengthLabel = new Label();
+            SymmetricPanel_KeyLengthTextBox = new TextBox();
+            SymmetricPanel_LengthTrackBar = new TrackBar();
             MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DeriverPanel_LengthTrackBar).BeginInit();
             DeriverPanel.SuspendLayout();
             GeneratorPanel.SuspendLayout();
+            AsymmetricPanel.SuspendLayout();
             SymmetricPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SymmetricPanel_LengthTrackBar).BeginInit();
-            AsymmetricPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MenuStrip
@@ -276,6 +277,7 @@
             // 
             // DeriverPanel
             // 
+            DeriverPanel.Controls.Add(DeriverPanel_EyeballLabel);
             DeriverPanel.Controls.Add(DeriverPanel_RefreshLabel);
             DeriverPanel.Controls.Add(DeriverPanel_PasswordLabel);
             DeriverPanel.Controls.Add(DeriverPanel_SaltValueTextBox);
@@ -288,7 +290,6 @@
             DeriverPanel.Controls.Add(DeriverPanel_SaltCheckBox);
             DeriverPanel.Controls.Add(DeriverPanel_Pbkdf2ClipboardLabel);
             DeriverPanel.Controls.Add(DeriverPanel_KeyLengthLabel);
-            DeriverPanel.Controls.Add(DeriverPanel_EyeballLabel);
             DeriverPanel.Controls.Add(DeriverPanel_KeyLengthTextBox);
             DeriverPanel.Location = new Point(0, 39);
             DeriverPanel.Name = "DeriverPanel";
@@ -313,8 +314,8 @@
             // 
             GeneratorPanel.Controls.Add(GeneratePanel_AsymmetricRadioButton);
             GeneratorPanel.Controls.Add(GeneratePanel_SymmetricRadioButton);
-            GeneratorPanel.Controls.Add(SymmetricPanel);
             GeneratorPanel.Controls.Add(AsymmetricPanel);
+            GeneratorPanel.Controls.Add(SymmetricPanel);
             GeneratorPanel.Location = new Point(0, 39);
             GeneratorPanel.Name = "GeneratorPanel";
             GeneratorPanel.Size = new Size(297, 374);
@@ -347,108 +348,9 @@
             GeneratePanel_SymmetricRadioButton.UseVisualStyleBackColor = true;
             GeneratePanel_SymmetricRadioButton.CheckedChanged += GeneratorPanel_RadioButton_CheckedChanged;
             // 
-            // SymmetricPanel
-            // 
-            SymmetricPanel.Controls.Add(SymmetricPanel_RefreshLabel);
-            SymmetricPanel.Controls.Add(SymmetricPanel_KeyValueTextBox);
-            SymmetricPanel.Controls.Add(SymmetricPanel_KeyClipboardLabel);
-            SymmetricPanel.Controls.Add(SymmetricPanel_KeyLabel);
-            SymmetricPanel.Controls.Add(SymmetricPanel_KeyLengthLabel);
-            SymmetricPanel.Controls.Add(SymmetricPanel_KeyLengthTextBox);
-            SymmetricPanel.Controls.Add(SymmetricPanel_LengthTrackBar);
-            SymmetricPanel.Location = new Point(0, 82);
-            SymmetricPanel.Name = "SymmetricPanel";
-            SymmetricPanel.Size = new Size(297, 292);
-            SymmetricPanel.TabIndex = 21;
-            // 
-            // SymmetricPanel_RefreshLabel
-            // 
-            SymmetricPanel_RefreshLabel.AutoSize = true;
-            SymmetricPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_RefreshLabel.Location = new Point(254, 80);
-            SymmetricPanel_RefreshLabel.Name = "SymmetricPanel_RefreshLabel";
-            SymmetricPanel_RefreshLabel.Size = new Size(28, 19);
-            SymmetricPanel_RefreshLabel.TabIndex = 20;
-            SymmetricPanel_RefreshLabel.Text = "🔄";
-            SymmetricPanel_RefreshLabel.Click += SymmetricPanel_RefreshLabel_Click;
-            SymmetricPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
-            SymmetricPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
-            // 
-            // SymmetricPanel_KeyValueTextBox
-            // 
-            SymmetricPanel_KeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
-            SymmetricPanel_KeyValueTextBox.BorderStyle = BorderStyle.FixedSingle;
-            SymmetricPanel_KeyValueTextBox.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyValueTextBox.Location = new Point(115, 185);
-            SymmetricPanel_KeyValueTextBox.Multiline = true;
-            SymmetricPanel_KeyValueTextBox.Name = "SymmetricPanel_KeyValueTextBox";
-            SymmetricPanel_KeyValueTextBox.ReadOnly = true;
-            SymmetricPanel_KeyValueTextBox.ScrollBars = ScrollBars.Horizontal;
-            SymmetricPanel_KeyValueTextBox.Size = new Size(165, 41);
-            SymmetricPanel_KeyValueTextBox.TabIndex = 19;
-            SymmetricPanel_KeyValueTextBox.WordWrap = false;
-            // 
-            // SymmetricPanel_KeyClipboardLabel
-            // 
-            SymmetricPanel_KeyClipboardLabel.AutoSize = true;
-            SymmetricPanel_KeyClipboardLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyClipboardLabel.Location = new Point(19, 188);
-            SymmetricPanel_KeyClipboardLabel.Name = "SymmetricPanel_KeyClipboardLabel";
-            SymmetricPanel_KeyClipboardLabel.Size = new Size(25, 19);
-            SymmetricPanel_KeyClipboardLabel.TabIndex = 18;
-            SymmetricPanel_KeyClipboardLabel.Text = "📋";
-            SymmetricPanel_KeyClipboardLabel.Click += SymmetricPanel_KeyClipboardLabel_Click;
-            SymmetricPanel_KeyClipboardLabel.MouseEnter += Label_MouseEnter;
-            SymmetricPanel_KeyClipboardLabel.MouseLeave += Label_MouseLeave;
-            // 
-            // SymmetricPanel_KeyLabel
-            // 
-            SymmetricPanel_KeyLabel.AutoSize = true;
-            SymmetricPanel_KeyLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyLabel.Location = new Point(45, 188);
-            SymmetricPanel_KeyLabel.Name = "SymmetricPanel_KeyLabel";
-            SymmetricPanel_KeyLabel.Size = new Size(34, 19);
-            SymmetricPanel_KeyLabel.TabIndex = 17;
-            SymmetricPanel_KeyLabel.Text = "Key:";
-            // 
-            // SymmetricPanel_KeyLengthLabel
-            // 
-            SymmetricPanel_KeyLengthLabel.AutoSize = true;
-            SymmetricPanel_KeyLengthLabel.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyLengthLabel.Location = new Point(15, 28);
-            SymmetricPanel_KeyLengthLabel.Name = "SymmetricPanel_KeyLengthLabel";
-            SymmetricPanel_KeyLengthLabel.Size = new Size(138, 19);
-            SymmetricPanel_KeyLengthLabel.TabIndex = 9;
-            SymmetricPanel_KeyLengthLabel.Text = "Key Length (in bytes)";
-            // 
-            // SymmetricPanel_KeyLengthTextBox
-            // 
-            SymmetricPanel_KeyLengthTextBox.BackColor = Color.FromArgb(32, 32, 32);
-            SymmetricPanel_KeyLengthTextBox.BorderStyle = BorderStyle.FixedSingle;
-            SymmetricPanel_KeyLengthTextBox.ForeColor = SystemColors.ButtonFace;
-            SymmetricPanel_KeyLengthTextBox.Location = new Point(242, 25);
-            SymmetricPanel_KeyLengthTextBox.Name = "SymmetricPanel_KeyLengthTextBox";
-            SymmetricPanel_KeyLengthTextBox.Size = new Size(40, 25);
-            SymmetricPanel_KeyLengthTextBox.TabIndex = 10;
-            SymmetricPanel_KeyLengthTextBox.Text = "32";
-            SymmetricPanel_KeyLengthTextBox.TextAlign = HorizontalAlignment.Right;
-            SymmetricPanel_KeyLengthTextBox.TextChanged += SymmetricPanel_KeyLengthTextBox_TextChanged;
-            // 
-            // SymmetricPanel_LengthTrackBar
-            // 
-            SymmetricPanel_LengthTrackBar.Location = new Point(11, 54);
-            SymmetricPanel_LengthTrackBar.Maximum = 512;
-            SymmetricPanel_LengthTrackBar.Minimum = 1;
-            SymmetricPanel_LengthTrackBar.Name = "SymmetricPanel_LengthTrackBar";
-            SymmetricPanel_LengthTrackBar.Size = new Size(273, 45);
-            SymmetricPanel_LengthTrackBar.TabIndex = 8;
-            SymmetricPanel_LengthTrackBar.TickFrequency = 32;
-            SymmetricPanel_LengthTrackBar.TickStyle = TickStyle.None;
-            SymmetricPanel_LengthTrackBar.Value = 32;
-            SymmetricPanel_LengthTrackBar.Scroll += SymmetricPanel_LengthTrackBar_Scroll;
-            // 
             // AsymmetricPanel
             // 
+            AsymmetricPanel.Controls.Add(AsymmetricPanel_RefreshLabel);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_InfoLabel);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_EcdsaRadioButton);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_PrivateKeyValueTextBox);
@@ -462,6 +364,19 @@
             AsymmetricPanel.Name = "AsymmetricPanel";
             AsymmetricPanel.Size = new Size(297, 292);
             AsymmetricPanel.TabIndex = 20;
+            // 
+            // AsymmetricPanel_RefreshLabel
+            // 
+            AsymmetricPanel_RefreshLabel.AutoSize = true;
+            AsymmetricPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
+            AsymmetricPanel_RefreshLabel.Location = new Point(258, 160);
+            AsymmetricPanel_RefreshLabel.Name = "AsymmetricPanel_RefreshLabel";
+            AsymmetricPanel_RefreshLabel.Size = new Size(28, 19);
+            AsymmetricPanel_RefreshLabel.TabIndex = 25;
+            AsymmetricPanel_RefreshLabel.Text = "🔄";
+            AsymmetricPanel_RefreshLabel.Click += AsymmetricPanel_RefreshLabel_Click;
+            AsymmetricPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
+            AsymmetricPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
             // 
             // AsymmetricPanel_InfoLabel
             // 
@@ -573,6 +488,106 @@
             AsymmetricPanel_PublicKeyLabel.TabIndex = 14;
             AsymmetricPanel_PublicKeyLabel.Text = "Public:";
             // 
+            // SymmetricPanel
+            // 
+            SymmetricPanel.Controls.Add(SymmetricPanel_RefreshLabel);
+            SymmetricPanel.Controls.Add(SymmetricPanel_KeyValueTextBox);
+            SymmetricPanel.Controls.Add(SymmetricPanel_KeyClipboardLabel);
+            SymmetricPanel.Controls.Add(SymmetricPanel_KeyLabel);
+            SymmetricPanel.Controls.Add(SymmetricPanel_KeyLengthLabel);
+            SymmetricPanel.Controls.Add(SymmetricPanel_KeyLengthTextBox);
+            SymmetricPanel.Controls.Add(SymmetricPanel_LengthTrackBar);
+            SymmetricPanel.Location = new Point(0, 82);
+            SymmetricPanel.Name = "SymmetricPanel";
+            SymmetricPanel.Size = new Size(297, 292);
+            SymmetricPanel.TabIndex = 21;
+            // 
+            // SymmetricPanel_RefreshLabel
+            // 
+            SymmetricPanel_RefreshLabel.AutoSize = true;
+            SymmetricPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
+            SymmetricPanel_RefreshLabel.Location = new Point(254, 80);
+            SymmetricPanel_RefreshLabel.Name = "SymmetricPanel_RefreshLabel";
+            SymmetricPanel_RefreshLabel.Size = new Size(28, 19);
+            SymmetricPanel_RefreshLabel.TabIndex = 20;
+            SymmetricPanel_RefreshLabel.Text = "🔄";
+            SymmetricPanel_RefreshLabel.Click += SymmetricPanel_RefreshLabel_Click;
+            SymmetricPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
+            SymmetricPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
+            // 
+            // SymmetricPanel_KeyValueTextBox
+            // 
+            SymmetricPanel_KeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
+            SymmetricPanel_KeyValueTextBox.BorderStyle = BorderStyle.FixedSingle;
+            SymmetricPanel_KeyValueTextBox.ForeColor = SystemColors.ButtonFace;
+            SymmetricPanel_KeyValueTextBox.Location = new Point(115, 185);
+            SymmetricPanel_KeyValueTextBox.Multiline = true;
+            SymmetricPanel_KeyValueTextBox.Name = "SymmetricPanel_KeyValueTextBox";
+            SymmetricPanel_KeyValueTextBox.ReadOnly = true;
+            SymmetricPanel_KeyValueTextBox.ScrollBars = ScrollBars.Horizontal;
+            SymmetricPanel_KeyValueTextBox.Size = new Size(165, 41);
+            SymmetricPanel_KeyValueTextBox.TabIndex = 19;
+            SymmetricPanel_KeyValueTextBox.WordWrap = false;
+            // 
+            // SymmetricPanel_KeyClipboardLabel
+            // 
+            SymmetricPanel_KeyClipboardLabel.AutoSize = true;
+            SymmetricPanel_KeyClipboardLabel.ForeColor = SystemColors.ButtonFace;
+            SymmetricPanel_KeyClipboardLabel.Location = new Point(19, 188);
+            SymmetricPanel_KeyClipboardLabel.Name = "SymmetricPanel_KeyClipboardLabel";
+            SymmetricPanel_KeyClipboardLabel.Size = new Size(25, 19);
+            SymmetricPanel_KeyClipboardLabel.TabIndex = 18;
+            SymmetricPanel_KeyClipboardLabel.Text = "📋";
+            SymmetricPanel_KeyClipboardLabel.Click += SymmetricPanel_KeyClipboardLabel_Click;
+            SymmetricPanel_KeyClipboardLabel.MouseEnter += Label_MouseEnter;
+            SymmetricPanel_KeyClipboardLabel.MouseLeave += Label_MouseLeave;
+            // 
+            // SymmetricPanel_KeyLabel
+            // 
+            SymmetricPanel_KeyLabel.AutoSize = true;
+            SymmetricPanel_KeyLabel.ForeColor = SystemColors.ButtonFace;
+            SymmetricPanel_KeyLabel.Location = new Point(45, 188);
+            SymmetricPanel_KeyLabel.Name = "SymmetricPanel_KeyLabel";
+            SymmetricPanel_KeyLabel.Size = new Size(34, 19);
+            SymmetricPanel_KeyLabel.TabIndex = 17;
+            SymmetricPanel_KeyLabel.Text = "Key:";
+            // 
+            // SymmetricPanel_KeyLengthLabel
+            // 
+            SymmetricPanel_KeyLengthLabel.AutoSize = true;
+            SymmetricPanel_KeyLengthLabel.ForeColor = SystemColors.ButtonFace;
+            SymmetricPanel_KeyLengthLabel.Location = new Point(15, 28);
+            SymmetricPanel_KeyLengthLabel.Name = "SymmetricPanel_KeyLengthLabel";
+            SymmetricPanel_KeyLengthLabel.Size = new Size(138, 19);
+            SymmetricPanel_KeyLengthLabel.TabIndex = 9;
+            SymmetricPanel_KeyLengthLabel.Text = "Key Length (in bytes)";
+            // 
+            // SymmetricPanel_KeyLengthTextBox
+            // 
+            SymmetricPanel_KeyLengthTextBox.BackColor = Color.FromArgb(32, 32, 32);
+            SymmetricPanel_KeyLengthTextBox.BorderStyle = BorderStyle.FixedSingle;
+            SymmetricPanel_KeyLengthTextBox.ForeColor = SystemColors.ButtonFace;
+            SymmetricPanel_KeyLengthTextBox.Location = new Point(242, 25);
+            SymmetricPanel_KeyLengthTextBox.Name = "SymmetricPanel_KeyLengthTextBox";
+            SymmetricPanel_KeyLengthTextBox.Size = new Size(40, 25);
+            SymmetricPanel_KeyLengthTextBox.TabIndex = 10;
+            SymmetricPanel_KeyLengthTextBox.Text = "32";
+            SymmetricPanel_KeyLengthTextBox.TextAlign = HorizontalAlignment.Right;
+            SymmetricPanel_KeyLengthTextBox.TextChanged += SymmetricPanel_KeyLengthTextBox_TextChanged;
+            // 
+            // SymmetricPanel_LengthTrackBar
+            // 
+            SymmetricPanel_LengthTrackBar.Location = new Point(11, 54);
+            SymmetricPanel_LengthTrackBar.Maximum = 512;
+            SymmetricPanel_LengthTrackBar.Minimum = 1;
+            SymmetricPanel_LengthTrackBar.Name = "SymmetricPanel_LengthTrackBar";
+            SymmetricPanel_LengthTrackBar.Size = new Size(273, 45);
+            SymmetricPanel_LengthTrackBar.TabIndex = 8;
+            SymmetricPanel_LengthTrackBar.TickFrequency = 32;
+            SymmetricPanel_LengthTrackBar.TickStyle = TickStyle.None;
+            SymmetricPanel_LengthTrackBar.Value = 32;
+            SymmetricPanel_LengthTrackBar.Scroll += SymmetricPanel_LengthTrackBar_Scroll;
+            // 
             // Display
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -580,8 +595,8 @@
             BackColor = Color.FromArgb(32, 32, 32);
             ClientSize = new Size(298, 414);
             Controls.Add(MenuStrip);
-            Controls.Add(DeriverPanel);
             Controls.Add(GeneratorPanel);
+            Controls.Add(DeriverPanel);
             Font = new Font("Segoe UI Emoji", 10F);
             MainMenuStrip = MenuStrip;
             Name = "Display";
@@ -594,11 +609,11 @@
             DeriverPanel.PerformLayout();
             GeneratorPanel.ResumeLayout(false);
             GeneratorPanel.PerformLayout();
+            AsymmetricPanel.ResumeLayout(false);
+            AsymmetricPanel.PerformLayout();
             SymmetricPanel.ResumeLayout(false);
             SymmetricPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SymmetricPanel_LengthTrackBar).EndInit();
-            AsymmetricPanel.ResumeLayout(false);
-            AsymmetricPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -645,5 +660,6 @@
         private RadioButton AsymmetricPanel_EcdsaRadioButton;
         private RadioButton AsymmetricPanel_RsaRadioButton;
         private Label AsymmetricPanel_InfoLabel;
+        private Label AsymmetricPanel_RefreshLabel;
     }
 }
