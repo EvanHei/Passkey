@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace PasskeyLibrary;
 
+/// <summary>
+/// Provides methods for generating asymmetric cryptographic key pairs for RSA and ECDSA algorithms.
+/// </summary>
 public static class AsymmetricKeyGenerator
 {
+    /// <summary>
+    /// Generates an RSA key pair.
+    /// </summary>
+    /// <returns>A tuple containing the public and private keys as byte arrays.</returns>
     public static (byte[] publicKey, byte[] privateKey) GenerateRsaKeyPair()
     {
         using RSA rsa = RSA.Create();
@@ -18,6 +25,10 @@ public static class AsymmetricKeyGenerator
         return (publicKey, privateKey);
     }
 
+    /// <summary>
+    /// Generates an ECDSA key pair.
+    /// </summary>
+    /// <returns>A tuple containing the public and private keys as byte arrays.</returns>
     public static (byte[] publicKey, byte[] privateKey) GenerateEcdsaKeyPair()
     {
         using ECDsa ecdsa = ECDsa.Create();
