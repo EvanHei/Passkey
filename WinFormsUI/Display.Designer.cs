@@ -46,6 +46,7 @@
             DeriverPanel_SaltClipboardLabel = new Label();
             DeriverPanel_SaltLabel = new Label();
             DeriverPanel = new Panel();
+            DeriverPanel_RefreshLabel = new Label();
             GeneratorPanel = new Panel();
             GeneratePanel_AsymmetricRadioButton = new RadioButton();
             GeneratePanel_SymmetricRadioButton = new RadioButton();
@@ -58,13 +59,15 @@
             SymmetricPanel_KeyLengthTextBox = new TextBox();
             SymmetricPanel_LengthTrackBar = new TrackBar();
             AsymmetricPanel = new Panel();
+            AsymmetricPanel_InfoLabel = new Label();
+            AsymmetricPanel_EcdsaRadioButton = new RadioButton();
             AsymmetricPanel_PrivateKeyValueTextBox = new TextBox();
+            AsymmetricPanel_RsaRadioButton = new RadioButton();
             AsymmetricPanel_PublicKeyValueTextBox = new TextBox();
             AsymmetricPanel_PrivateKeyClipboardLabel = new Label();
             AsymmetricPanel_PublicKeyClipboardLabel = new Label();
             AsymmetricPanel_PrivateKeyLabel = new Label();
             AsymmetricPanel_PublicKeyLabel = new Label();
-            DeriverPanel_RefreshLabel = new Label();
             MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DeriverPanel_LengthTrackBar).BeginInit();
             DeriverPanel.SuspendLayout();
@@ -225,6 +228,7 @@
             DeriverPanel_Pbkdf2ValueTextBox.Location = new Point(115, 267);
             DeriverPanel_Pbkdf2ValueTextBox.Multiline = true;
             DeriverPanel_Pbkdf2ValueTextBox.Name = "DeriverPanel_Pbkdf2ValueTextBox";
+            DeriverPanel_Pbkdf2ValueTextBox.ReadOnly = true;
             DeriverPanel_Pbkdf2ValueTextBox.ScrollBars = ScrollBars.Horizontal;
             DeriverPanel_Pbkdf2ValueTextBox.Size = new Size(165, 41);
             DeriverPanel_Pbkdf2ValueTextBox.TabIndex = 10;
@@ -238,6 +242,7 @@
             DeriverPanel_SaltValueTextBox.Location = new Point(115, 319);
             DeriverPanel_SaltValueTextBox.Multiline = true;
             DeriverPanel_SaltValueTextBox.Name = "DeriverPanel_SaltValueTextBox";
+            DeriverPanel_SaltValueTextBox.ReadOnly = true;
             DeriverPanel_SaltValueTextBox.ScrollBars = ScrollBars.Horizontal;
             DeriverPanel_SaltValueTextBox.Size = new Size(165, 41);
             DeriverPanel_SaltValueTextBox.TabIndex = 13;
@@ -289,6 +294,20 @@
             DeriverPanel.Name = "DeriverPanel";
             DeriverPanel.Size = new Size(297, 374);
             DeriverPanel.TabIndex = 14;
+            // 
+            // DeriverPanel_RefreshLabel
+            // 
+            DeriverPanel_RefreshLabel.AutoSize = true;
+            DeriverPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
+            DeriverPanel_RefreshLabel.Location = new Point(256, 203);
+            DeriverPanel_RefreshLabel.Name = "DeriverPanel_RefreshLabel";
+            DeriverPanel_RefreshLabel.Size = new Size(28, 19);
+            DeriverPanel_RefreshLabel.TabIndex = 21;
+            DeriverPanel_RefreshLabel.Text = "🔄";
+            DeriverPanel_RefreshLabel.Visible = false;
+            DeriverPanel_RefreshLabel.Click += DeriverPanel_RefreshLabel_Click;
+            DeriverPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
+            DeriverPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
             // 
             // GeneratorPanel
             // 
@@ -363,6 +382,7 @@
             SymmetricPanel_KeyValueTextBox.Location = new Point(114, 157);
             SymmetricPanel_KeyValueTextBox.Multiline = true;
             SymmetricPanel_KeyValueTextBox.Name = "SymmetricPanel_KeyValueTextBox";
+            SymmetricPanel_KeyValueTextBox.ReadOnly = true;
             SymmetricPanel_KeyValueTextBox.ScrollBars = ScrollBars.Horizontal;
             SymmetricPanel_KeyValueTextBox.Size = new Size(165, 41);
             SymmetricPanel_KeyValueTextBox.TabIndex = 19;
@@ -429,7 +449,10 @@
             // 
             // AsymmetricPanel
             // 
+            AsymmetricPanel.Controls.Add(AsymmetricPanel_InfoLabel);
+            AsymmetricPanel.Controls.Add(AsymmetricPanel_EcdsaRadioButton);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_PrivateKeyValueTextBox);
+            AsymmetricPanel.Controls.Add(AsymmetricPanel_RsaRadioButton);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_PublicKeyValueTextBox);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_PrivateKeyClipboardLabel);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_PublicKeyClipboardLabel);
@@ -440,6 +463,28 @@
             AsymmetricPanel.Size = new Size(297, 292);
             AsymmetricPanel.TabIndex = 20;
             // 
+            // AsymmetricPanel_InfoLabel
+            // 
+            AsymmetricPanel_InfoLabel.AutoSize = true;
+            AsymmetricPanel_InfoLabel.ForeColor = SystemColors.ButtonFace;
+            AsymmetricPanel_InfoLabel.Location = new Point(8, 94);
+            AsymmetricPanel_InfoLabel.Name = "AsymmetricPanel_InfoLabel";
+            AsymmetricPanel_InfoLabel.Size = new Size(284, 57);
+            AsymmetricPanel_InfoLabel.TabIndex = 24;
+            AsymmetricPanel_InfoLabel.Text = "*The public key will be exported in the X.509 \r\nSubjectPublicKeyInfo format, and the private \r\nkey will be exported in the PKCS #1 format.\r\n";
+            // 
+            // AsymmetricPanel_EcdsaRadioButton
+            // 
+            AsymmetricPanel_EcdsaRadioButton.AutoSize = true;
+            AsymmetricPanel_EcdsaRadioButton.ForeColor = SystemColors.ButtonFace;
+            AsymmetricPanel_EcdsaRadioButton.Location = new Point(14, 53);
+            AsymmetricPanel_EcdsaRadioButton.Name = "AsymmetricPanel_EcdsaRadioButton";
+            AsymmetricPanel_EcdsaRadioButton.Size = new Size(69, 23);
+            AsymmetricPanel_EcdsaRadioButton.TabIndex = 23;
+            AsymmetricPanel_EcdsaRadioButton.TabStop = true;
+            AsymmetricPanel_EcdsaRadioButton.Text = "ECDSA";
+            AsymmetricPanel_EcdsaRadioButton.UseVisualStyleBackColor = true;
+            // 
             // AsymmetricPanel_PrivateKeyValueTextBox
             // 
             AsymmetricPanel_PrivateKeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
@@ -448,10 +493,25 @@
             AsymmetricPanel_PrivateKeyValueTextBox.Location = new Point(112, 223);
             AsymmetricPanel_PrivateKeyValueTextBox.Multiline = true;
             AsymmetricPanel_PrivateKeyValueTextBox.Name = "AsymmetricPanel_PrivateKeyValueTextBox";
+            AsymmetricPanel_PrivateKeyValueTextBox.ReadOnly = true;
             AsymmetricPanel_PrivateKeyValueTextBox.ScrollBars = ScrollBars.Horizontal;
             AsymmetricPanel_PrivateKeyValueTextBox.Size = new Size(165, 41);
             AsymmetricPanel_PrivateKeyValueTextBox.TabIndex = 19;
             AsymmetricPanel_PrivateKeyValueTextBox.WordWrap = false;
+            // 
+            // AsymmetricPanel_RsaRadioButton
+            // 
+            AsymmetricPanel_RsaRadioButton.AutoSize = true;
+            AsymmetricPanel_RsaRadioButton.Checked = true;
+            AsymmetricPanel_RsaRadioButton.ForeColor = SystemColors.ButtonFace;
+            AsymmetricPanel_RsaRadioButton.Location = new Point(14, 24);
+            AsymmetricPanel_RsaRadioButton.Name = "AsymmetricPanel_RsaRadioButton";
+            AsymmetricPanel_RsaRadioButton.Size = new Size(51, 23);
+            AsymmetricPanel_RsaRadioButton.TabIndex = 22;
+            AsymmetricPanel_RsaRadioButton.TabStop = true;
+            AsymmetricPanel_RsaRadioButton.Text = "RSA";
+            AsymmetricPanel_RsaRadioButton.UseVisualStyleBackColor = true;
+            AsymmetricPanel_RsaRadioButton.CheckedChanged += AsymmetricPanel_RsaRadioButton_CheckedChanged;
             // 
             // AsymmetricPanel_PublicKeyValueTextBox
             // 
@@ -461,6 +521,7 @@
             AsymmetricPanel_PublicKeyValueTextBox.Location = new Point(112, 171);
             AsymmetricPanel_PublicKeyValueTextBox.Multiline = true;
             AsymmetricPanel_PublicKeyValueTextBox.Name = "AsymmetricPanel_PublicKeyValueTextBox";
+            AsymmetricPanel_PublicKeyValueTextBox.ReadOnly = true;
             AsymmetricPanel_PublicKeyValueTextBox.ScrollBars = ScrollBars.Horizontal;
             AsymmetricPanel_PublicKeyValueTextBox.Size = new Size(165, 41);
             AsymmetricPanel_PublicKeyValueTextBox.TabIndex = 16;
@@ -475,6 +536,9 @@
             AsymmetricPanel_PrivateKeyClipboardLabel.Size = new Size(25, 19);
             AsymmetricPanel_PrivateKeyClipboardLabel.TabIndex = 18;
             AsymmetricPanel_PrivateKeyClipboardLabel.Text = "📋";
+            AsymmetricPanel_PrivateKeyClipboardLabel.Click += AsymmetricPanel_PrivateKeyClipboardLabel_Click;
+            AsymmetricPanel_PrivateKeyClipboardLabel.MouseEnter += Label_MouseEnter;
+            AsymmetricPanel_PrivateKeyClipboardLabel.MouseLeave += Label_MouseLeave;
             // 
             // AsymmetricPanel_PublicKeyClipboardLabel
             // 
@@ -485,6 +549,9 @@
             AsymmetricPanel_PublicKeyClipboardLabel.Size = new Size(25, 19);
             AsymmetricPanel_PublicKeyClipboardLabel.TabIndex = 15;
             AsymmetricPanel_PublicKeyClipboardLabel.Text = "📋";
+            AsymmetricPanel_PublicKeyClipboardLabel.Click += AsymmetricPanel_PublicKeyClipboardLabel_Click;
+            AsymmetricPanel_PublicKeyClipboardLabel.MouseEnter += Label_MouseEnter;
+            AsymmetricPanel_PublicKeyClipboardLabel.MouseLeave += Label_MouseLeave;
             // 
             // AsymmetricPanel_PrivateKeyLabel
             // 
@@ -506,19 +573,6 @@
             AsymmetricPanel_PublicKeyLabel.TabIndex = 14;
             AsymmetricPanel_PublicKeyLabel.Text = "Public:";
             // 
-            // DeriverPanel_RefreshLabel
-            // 
-            DeriverPanel_RefreshLabel.AutoSize = true;
-            DeriverPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
-            DeriverPanel_RefreshLabel.Location = new Point(256, 203);
-            DeriverPanel_RefreshLabel.Name = "DeriverPanel_RefreshLabel";
-            DeriverPanel_RefreshLabel.Size = new Size(28, 19);
-            DeriverPanel_RefreshLabel.TabIndex = 21;
-            DeriverPanel_RefreshLabel.Text = "🔄";
-            DeriverPanel_RefreshLabel.Click += DeriverPanel_RefreshLabel_Click;
-            DeriverPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
-            DeriverPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
-            // 
             // Display
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -526,8 +580,8 @@
             BackColor = Color.FromArgb(32, 32, 32);
             ClientSize = new Size(298, 414);
             Controls.Add(MenuStrip);
-            Controls.Add(DeriverPanel);
             Controls.Add(GeneratorPanel);
+            Controls.Add(DeriverPanel);
             Font = new Font("Segoe UI Emoji", 10F);
             MainMenuStrip = MenuStrip;
             Name = "Display";
@@ -588,5 +642,8 @@
         private Label SymmetricPanel_KeyLabel;
         private Label SymmetricPanel_RefreshLabel;
         private Label DeriverPanel_RefreshLabel;
+        private RadioButton AsymmetricPanel_EcdsaRadioButton;
+        private RadioButton AsymmetricPanel_RsaRadioButton;
+        private Label AsymmetricPanel_InfoLabel;
     }
 }

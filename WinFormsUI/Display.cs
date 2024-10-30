@@ -92,6 +92,7 @@ namespace WinFormsUI
                 DeriverPanel_SaltClipboardLabel.Visible = true;
                 DeriverPanel_SaltLabel.Visible = true;
                 DeriverPanel_SaltValueTextBox.Visible = true;
+                DeriverPanel_RefreshLabel.Visible = true;
             }
             else
             {
@@ -101,6 +102,7 @@ namespace WinFormsUI
                 DeriverPanel_SaltClipboardLabel.Visible = false;
                 DeriverPanel_SaltLabel.Visible = false;
                 DeriverPanel_SaltValueTextBox.Visible = false;
+                DeriverPanel_RefreshLabel.Visible = false;
             }
 
             DeriverTryComputeKey();
@@ -191,6 +193,8 @@ namespace WinFormsUI
         {
             SymmetricPanel.Visible = false;
             AsymmetricPanel.Visible = true;
+
+            AsymmetricTryComputeKey();
         }
 
         private void GeneratorPanel_RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -239,6 +243,26 @@ namespace WinFormsUI
             SymmetricPanel_KeyValueTextBox.Text = key;
         }
 
+        private void AsymmetricTryComputeKey()
+        {
+            (byte[] publicKeyBytes, byte[] privateKeyBytes) = (null, null);
+
+            if (AsymmetricPanel_RsaRadioButton.Checked)
+            {
+                (publicKeyBytes, privateKeyBytes) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
+            }
+            else if (AsymmetricPanel_EcdsaRadioButton.Checked)
+            {
+                (publicKeyBytes, privateKeyBytes) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
+            }
+
+            string publicKey = BitConverter.ToString(publicKeyBytes).Replace("-", "");
+            string privateKey = BitConverter.ToString(privateKeyBytes).Replace("-", "");
+
+            AsymmetricPanel_PublicKeyValueTextBox.Text = publicKey;
+            AsymmetricPanel_PrivateKeyValueTextBox.Text = privateKey;
+        }
+
         private void SymmetricPanel_KeyClipboardLabel_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(SymmetricPanel_KeyValueTextBox.Text))
@@ -252,6 +276,40 @@ namespace WinFormsUI
         private void SymmetricPanel_RefreshLabel_Click(object sender, EventArgs e)
         {
             SymmetricTryComputeKey();
+        }
+
+        private void AsymmetricPanel_RsaRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AsymmetricPanel_RsaRadioButton.Checked)
+            {
+                AsymmetricPanel_InfoLabel.Text = "*The public key will be exported in the X.509 \r\nSubjectPublicKeyInfo format, and the private \r\nkey will be exported in the PKCS #1 format.\r\n";
+                AsymmetricTryComputeKey();
+            }
+            else if (AsymmetricPanel_EcdsaRadioButton.Checked)
+            {
+                AsymmetricPanel_InfoLabel.Text = "*The public key will be exported in the X.509 \r\nSubjectPublicKeyInfo format, and the private \r\nkey will be exported in the PKCS #8 format.\r\n";
+                AsymmetricTryComputeKey();
+            }
+        }
+
+        private void AsymmetricPanel_PublicKeyClipboardLabel_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(AsymmetricPanel_PublicKeyValueTextBox.Text))
+            {
+                return;
+            }
+
+            Clipboard.SetText(AsymmetricPanel_PublicKeyValueTextBox.Text);
+        }
+
+        private void AsymmetricPanel_PrivateKeyClipboardLabel_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(AsymmetricPanel_PrivateKeyValueTextBox.Text))
+            {
+                return;
+            }
+
+            Clipboard.SetText(AsymmetricPanel_PrivateKeyValueTextBox.Text);
         }
     }
 }
