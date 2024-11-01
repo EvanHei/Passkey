@@ -46,6 +46,8 @@
             DeriverPanel_SaltClipboardLabel = new Label();
             DeriverPanel_SaltLabel = new Label();
             DeriverPanel = new Panel();
+            DeriverPanel_IterationsLabel = new Label();
+            DeriverPanel_IterationsNumericUpDown = new NumericUpDown();
             DeriverPanel_AlgorithmComboBox = new ComboBox();
             DeriverPanel_RefreshLabel = new Label();
             GeneratorPanel = new Panel();
@@ -73,6 +75,7 @@
             MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DeriverPanel_LengthTrackBar).BeginInit();
             DeriverPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DeriverPanel_IterationsNumericUpDown).BeginInit();
             GeneratorPanel.SuspendLayout();
             AsymmetricPanel.SuspendLayout();
             SymmetricPanel.SuspendLayout();
@@ -167,7 +170,7 @@
             // 
             DeriverPanel_SaltCheckBox.AutoSize = true;
             DeriverPanel_SaltCheckBox.ForeColor = SystemColors.ButtonFace;
-            DeriverPanel_SaltCheckBox.Location = new Point(232, 177);
+            DeriverPanel_SaltCheckBox.Location = new Point(214, 195);
             DeriverPanel_SaltCheckBox.Name = "DeriverPanel_SaltCheckBox";
             DeriverPanel_SaltCheckBox.Size = new Size(50, 23);
             DeriverPanel_SaltCheckBox.TabIndex = 5;
@@ -278,6 +281,8 @@
             // 
             // DeriverPanel
             // 
+            DeriverPanel.Controls.Add(DeriverPanel_IterationsLabel);
+            DeriverPanel.Controls.Add(DeriverPanel_IterationsNumericUpDown);
             DeriverPanel.Controls.Add(DeriverPanel_AlgorithmComboBox);
             DeriverPanel.Controls.Add(DeriverPanel_EyeballLabel);
             DeriverPanel.Controls.Add(DeriverPanel_RefreshLabel);
@@ -298,6 +303,30 @@
             DeriverPanel.Size = new Size(297, 374);
             DeriverPanel.TabIndex = 14;
             // 
+            // DeriverPanel_IterationsLabel
+            // 
+            DeriverPanel_IterationsLabel.AutoSize = true;
+            DeriverPanel_IterationsLabel.ForeColor = SystemColors.ButtonFace;
+            DeriverPanel_IterationsLabel.Location = new Point(15, 170);
+            DeriverPanel_IterationsLabel.Name = "DeriverPanel_IterationsLabel";
+            DeriverPanel_IterationsLabel.Size = new Size(67, 19);
+            DeriverPanel_IterationsLabel.TabIndex = 24;
+            DeriverPanel_IterationsLabel.Text = "Iterations";
+            // 
+            // DeriverPanel_IterationsNumericUpDown
+            // 
+            DeriverPanel_IterationsNumericUpDown.BackColor = Color.FromArgb(32, 32, 32);
+            DeriverPanel_IterationsNumericUpDown.BorderStyle = BorderStyle.FixedSingle;
+            DeriverPanel_IterationsNumericUpDown.ForeColor = SystemColors.ButtonFace;
+            DeriverPanel_IterationsNumericUpDown.Location = new Point(19, 193);
+            DeriverPanel_IterationsNumericUpDown.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            DeriverPanel_IterationsNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            DeriverPanel_IterationsNumericUpDown.Name = "DeriverPanel_IterationsNumericUpDown";
+            DeriverPanel_IterationsNumericUpDown.Size = new Size(108, 25);
+            DeriverPanel_IterationsNumericUpDown.TabIndex = 23;
+            DeriverPanel_IterationsNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            DeriverPanel_IterationsNumericUpDown.ValueChanged += DeriverPanel_IterationsNumericUpDown_ValueChanged;
+            // 
             // DeriverPanel_AlgorithmComboBox
             // 
             DeriverPanel_AlgorithmComboBox.BackColor = Color.FromArgb(32, 32, 32);
@@ -305,9 +334,9 @@
             DeriverPanel_AlgorithmComboBox.FlatStyle = FlatStyle.Flat;
             DeriverPanel_AlgorithmComboBox.ForeColor = SystemColors.ButtonFace;
             DeriverPanel_AlgorithmComboBox.FormattingEnabled = true;
-            DeriverPanel_AlgorithmComboBox.Location = new Point(19, 173);
+            DeriverPanel_AlgorithmComboBox.Location = new Point(18, 227);
             DeriverPanel_AlgorithmComboBox.Name = "DeriverPanel_AlgorithmComboBox";
-            DeriverPanel_AlgorithmComboBox.Size = new Size(108, 25);
+            DeriverPanel_AlgorithmComboBox.Size = new Size(109, 25);
             DeriverPanel_AlgorithmComboBox.TabIndex = 22;
             DeriverPanel_AlgorithmComboBox.SelectedIndexChanged += DeriverPanel_AlgorithmComboBox_SelectedIndexChanged;
             // 
@@ -315,7 +344,7 @@
             // 
             DeriverPanel_RefreshLabel.AutoSize = true;
             DeriverPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
-            DeriverPanel_RefreshLabel.Location = new Point(256, 203);
+            DeriverPanel_RefreshLabel.Location = new Point(264, 196);
             DeriverPanel_RefreshLabel.Name = "DeriverPanel_RefreshLabel";
             DeriverPanel_RefreshLabel.Size = new Size(28, 19);
             DeriverPanel_RefreshLabel.TabIndex = 21;
@@ -622,6 +651,7 @@
             ((System.ComponentModel.ISupportInitialize)DeriverPanel_LengthTrackBar).EndInit();
             DeriverPanel.ResumeLayout(false);
             DeriverPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DeriverPanel_IterationsNumericUpDown).EndInit();
             GeneratorPanel.ResumeLayout(false);
             GeneratorPanel.PerformLayout();
             AsymmetricPanel.ResumeLayout(false);
@@ -677,5 +707,7 @@
         private Label AsymmetricPanel_InfoLabel;
         private Label AsymmetricPanel_RefreshLabel;
         private ComboBox DeriverPanel_AlgorithmComboBox;
+        private NumericUpDown DeriverPanel_IterationsNumericUpDown;
+        private Label DeriverPanel_IterationsLabel;
     }
 }

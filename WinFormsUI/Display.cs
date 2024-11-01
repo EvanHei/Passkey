@@ -68,7 +68,7 @@ namespace WinFormsUI
 
         private void DeriverTryComputeKey()
         {
-            if (!ValidateKeyLength(DeriverPanel_KeyLengthTextBox.Text, DeriverPanel_LengthTrackBar.Minimum, DeriverPanel_LengthTrackBar.Maximum) || 
+            if (!ValidateKeyLength(DeriverPanel_KeyLengthTextBox.Text, DeriverPanel_LengthTrackBar.Minimum, DeriverPanel_LengthTrackBar.Maximum) ||
                 string.IsNullOrWhiteSpace(DeriverPanel_PasswordTextBox.Text))
             {
                 DeriverPanel_Pbkdf2ValueTextBox.Text = "";
@@ -77,6 +77,7 @@ namespace WinFormsUI
 
             // read options
             int.TryParse(DeriverPanel_KeyLengthTextBox.Text, out int keyLength);
+            int iterations = (int)DeriverPanel_IterationsNumericUpDown.Value;
             HashAlgorithmName algorithm;
             switch (DeriverPanel_AlgorithmComboBox.SelectedIndex)
             {
@@ -98,8 +99,9 @@ namespace WinFormsUI
             }
 
             string key = BitConverter.ToString(KeyDeriver.DeriveKey(password: DeriverPanel_PasswordTextBox.Text,
-                                                                    length: keyLength,
                                                                     salt: salt,
+                                                                    length: keyLength,
+                                                                    iterations: iterations,
                                                                     algorithm: algorithm)).Replace("-", "");
             DeriverPanel_Pbkdf2ValueTextBox.Text = key;
         }
@@ -145,6 +147,20 @@ namespace WinFormsUI
 
         private void DeriverPanel_AlgorithmComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DeriverTryComputeKey();
+        }
+
+        private void DeriverPanel_IterationsNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (DeriverPanel_IterationsNumericUpDown.Value < 1)
+            {
+                DeriverPanel_IterationsNumericUpDown.Value = 1;
+            }
+            else if (DeriverPanel_IterationsNumericUpDown.Value > 10000)
+            {
+                DeriverPanel_IterationsNumericUpDown.Value = 10000;
+            }
+
             DeriverTryComputeKey();
         }
 
