@@ -13,6 +13,18 @@ namespace WinFormsUI
         {
             InitializeComponent();
             DeriverToolStripMenuItem_Click(null, null);
+            InitializeAlgorithmComboBox();
+        }
+
+        private void InitializeAlgorithmComboBox()
+        {
+            DeriverPanel_AlgorithmComboBox.Items.Add("SHA1");
+            DeriverPanel_AlgorithmComboBox.Items.Add("SHA256");
+            DeriverPanel_AlgorithmComboBox.Items.Add("SHA384");
+            DeriverPanel_AlgorithmComboBox.Items.Add("SHA512");
+
+            // SHA256 default
+            DeriverPanel_AlgorithmComboBox.SelectedIndex = 1;
         }
 
         private void DeriverPanel_EyeballLabel_Click(object sender, EventArgs e)
@@ -56,16 +68,39 @@ namespace WinFormsUI
 
         private void DeriverTryComputeKey()
         {
-            if (!ValidateKeyLength(DeriverPanel_KeyLengthTextBox.Text, DeriverPanel_LengthTrackBar.Minimum, DeriverPanel_LengthTrackBar.Maximum) || string.IsNullOrWhiteSpace(DeriverPanel_PasswordTextBox.Text))
+            if (!ValidateKeyLength(DeriverPanel_KeyLengthTextBox.Text, DeriverPanel_LengthTrackBar.Minimum, DeriverPanel_LengthTrackBar.Maximum) || 
+                string.IsNullOrWhiteSpace(DeriverPanel_PasswordTextBox.Text))
             {
                 DeriverPanel_Pbkdf2ValueTextBox.Text = "";
                 return;
             }
 
+            // read options
             int.TryParse(DeriverPanel_KeyLengthTextBox.Text, out int keyLength);
+            HashAlgorithmName algorithm;
+            switch (DeriverPanel_AlgorithmComboBox.SelectedIndex)
+            {
+                case 0:
+                    algorithm = HashAlgorithmName.SHA1;
+                    break;
+                case 1:
+                    algorithm = HashAlgorithmName.SHA256;
+                    break;
+                case 2:
+                    algorithm = HashAlgorithmName.SHA384;
+                    break;
+                case 3:
+                    algorithm = HashAlgorithmName.SHA512;
+                    break;
+                default:
+                    algorithm = HashAlgorithmName.SHA256;
+                    break;
+            }
+
             string key = BitConverter.ToString(KeyDeriver.DeriveKey(password: DeriverPanel_PasswordTextBox.Text,
                                                                     length: keyLength,
-                                                                    salt: salt)).Replace("-", "");
+                                                                    salt: salt,
+                                                                    algorithm: algorithm)).Replace("-", "");
             DeriverPanel_Pbkdf2ValueTextBox.Text = key;
         }
 
@@ -105,6 +140,11 @@ namespace WinFormsUI
                 DeriverPanel_RefreshLabel.Visible = false;
             }
 
+            DeriverTryComputeKey();
+        }
+
+        private void DeriverPanel_AlgorithmComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
             DeriverTryComputeKey();
         }
 

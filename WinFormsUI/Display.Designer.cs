@@ -46,6 +46,7 @@
             DeriverPanel_SaltClipboardLabel = new Label();
             DeriverPanel_SaltLabel = new Label();
             DeriverPanel = new Panel();
+            DeriverPanel_AlgorithmComboBox = new ComboBox();
             DeriverPanel_RefreshLabel = new Label();
             GeneratorPanel = new Panel();
             GeneratePanel_AsymmetricRadioButton = new RadioButton();
@@ -277,6 +278,7 @@
             // 
             // DeriverPanel
             // 
+            DeriverPanel.Controls.Add(DeriverPanel_AlgorithmComboBox);
             DeriverPanel.Controls.Add(DeriverPanel_EyeballLabel);
             DeriverPanel.Controls.Add(DeriverPanel_RefreshLabel);
             DeriverPanel.Controls.Add(DeriverPanel_PasswordLabel);
@@ -295,6 +297,19 @@
             DeriverPanel.Name = "DeriverPanel";
             DeriverPanel.Size = new Size(297, 374);
             DeriverPanel.TabIndex = 14;
+            // 
+            // DeriverPanel_AlgorithmComboBox
+            // 
+            DeriverPanel_AlgorithmComboBox.BackColor = Color.FromArgb(32, 32, 32);
+            DeriverPanel_AlgorithmComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            DeriverPanel_AlgorithmComboBox.FlatStyle = FlatStyle.Flat;
+            DeriverPanel_AlgorithmComboBox.ForeColor = SystemColors.ButtonFace;
+            DeriverPanel_AlgorithmComboBox.FormattingEnabled = true;
+            DeriverPanel_AlgorithmComboBox.Location = new Point(19, 173);
+            DeriverPanel_AlgorithmComboBox.Name = "DeriverPanel_AlgorithmComboBox";
+            DeriverPanel_AlgorithmComboBox.Size = new Size(108, 25);
+            DeriverPanel_AlgorithmComboBox.TabIndex = 22;
+            DeriverPanel_AlgorithmComboBox.SelectedIndexChanged += DeriverPanel_AlgorithmComboBox_SelectedIndexChanged;
             // 
             // DeriverPanel_RefreshLabel
             // 
@@ -595,8 +610,8 @@
             BackColor = Color.FromArgb(32, 32, 32);
             ClientSize = new Size(298, 414);
             Controls.Add(MenuStrip);
-            Controls.Add(GeneratorPanel);
             Controls.Add(DeriverPanel);
+            Controls.Add(GeneratorPanel);
             Font = new Font("Segoe UI Emoji", 10F);
             MainMenuStrip = MenuStrip;
             Name = "Display";
@@ -661,5 +676,6 @@
         private RadioButton AsymmetricPanel_RsaRadioButton;
         private Label AsymmetricPanel_InfoLabel;
         private Label AsymmetricPanel_RefreshLabel;
+        private ComboBox DeriverPanel_AlgorithmComboBox;
     }
 }
