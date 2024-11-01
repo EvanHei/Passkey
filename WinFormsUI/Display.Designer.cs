@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Display));
             MenuStrip = new MenuStrip();
             DeriverToolStripMenuItem = new ToolStripMenuItem();
             GeneratorToolStripMenuItem = new ToolStripMenuItem();
@@ -642,6 +643,7 @@
             Controls.Add(DeriverPanel);
             Controls.Add(GeneratorPanel);
             Font = new Font("Segoe UI Emoji", 10F);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = MenuStrip;
             Name = "Display";
             StartPosition = FormStartPosition.CenterScreen;
