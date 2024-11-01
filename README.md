@@ -52,6 +52,8 @@ The Deriver panel allows a key of variable length to be derived from a password 
 - **👁**: reveals the password.
 - **Key Length (in bytes)**: the desired length of the key in bytes.
 - **Slider**: adjusts the key length.
+- **Iterations**: sets the number of iterations in the derivation.
+- **Algorithm Dropdown**: sets the hashing algorithm.
 - **Salt**: adds a randomly generated salt to the password before derivation.
 - **🔄**: generates a new random salt and recomputes the key.
 - **📋**: copies a value to the clipboard.
@@ -87,5 +89,5 @@ The Generator panel allows creation of a symmetric or asymmetric key pair using 
 - **Framework**: .NET
 - **UI**: Windows Forms
 - **Version Control**: Git / GitHub
-- **Algorithms**: PBKDF2, RSA, ECDSA
+- **Algorithms**: PBKDF2, RSA, ECDSA, SHA1, SHA256, SHA384, SHA512
 - **Unit Tests**: xUnit

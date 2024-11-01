@@ -325,7 +325,7 @@
             DeriverPanel_IterationsNumericUpDown.Name = "DeriverPanel_IterationsNumericUpDown";
             DeriverPanel_IterationsNumericUpDown.Size = new Size(108, 25);
             DeriverPanel_IterationsNumericUpDown.TabIndex = 23;
-            DeriverPanel_IterationsNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            DeriverPanel_IterationsNumericUpDown.Value = new decimal(new int[] { 1000, 0, 0, 0 });
             DeriverPanel_IterationsNumericUpDown.ValueChanged += DeriverPanel_IterationsNumericUpDown_ValueChanged;
             // 
             // DeriverPanel_AlgorithmComboBox
