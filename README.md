@@ -13,12 +13,12 @@ A Windows desktop app for computing cryptographic keys.
 <details>
 <summary><strong>Run from executable</strong></summary>
 
-1. Download [Passkey-x64.exe]() or [Passkey-x86.exe]() depending on your architecture.
+1. Download [Passkey-v1.0.0-x64.exe](https://github.com/EvanHei/Passkey/releases/download/v1.0.0/Passkey-v1.0.0-x64.exe) or [Passkey-v1.0.0-x86.exe](https://github.com/EvanHei/Passkey/releases/download/v1.0.0/Passkey-v1.0.0-x86.exe) depending on your architecture.
 
-   | File            | SHA-256 |
-   | --------------- | ------- |
-   | Passkey-x64.exe | ``      |
-   | Passkey-x86.exe | ``      |
+   | File                   | SHA-256                                                            |
+   | ---------------------- | ------------------------------------------------------------------ |
+   | Passkey-v1.0.0-x64.exe | `5d858333145b586a57ea9f476197fea4649801c9705224003ec863f7791cc547` |
+   | Passkey-v1.0.0-x86.exe | `cf159d6205d35d58bcfb6b2b71014c72fef08e27fe19048d50acbae7bdf85621` |
 
 2. Double-click the executable, click "More info", and then click "Run anyway". This prompt will disappear the next time it's run.
 
