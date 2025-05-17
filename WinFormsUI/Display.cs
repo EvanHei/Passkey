@@ -8,8 +8,6 @@ namespace WinFormsUI
     {
         private bool isEyeballLabelClicked = false;
         private byte[] salt = null;
-        private string publicKeyPemString;
-        private string privateKeyPemString;
 
         public Display()
         {
@@ -251,8 +249,6 @@ namespace WinFormsUI
         {
             SymmetricPanel.Visible = false;
             AsymmetricPanel.Visible = true;
-
-            AsymmetricTryComputeKey();
         }
 
         private void GeneratorPanel_RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -301,18 +297,6 @@ namespace WinFormsUI
             SymmetricPanel_KeyValueTextBox.Text = key;
         }
 
-        private void AsymmetricTryComputeKey()
-        {
-            if (AsymmetricPanel_RsaRadioButton.Checked)
-            {
-                (publicKeyPemString, privateKeyPemString) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
-            }
-            else if (AsymmetricPanel_EcdsaRadioButton.Checked)
-            {
-                (publicKeyPemString, privateKeyPemString) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
-            }
-        }
-
         private void SymmetricPanel_KeyClipboardLabel_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(SymmetricPanel_KeyValueTextBox.Text))
@@ -328,13 +312,24 @@ namespace WinFormsUI
             SymmetricTryComputeKey();
         }
 
-        private void AsymmetricPanel_RefreshLabel_Click(object sender, EventArgs e)
-        {
-            AsymmetricTryComputeKey();
-        }
-
         private void AsymmetricPanel_DownloadButton_Click(object sender, EventArgs e)
         {
+            string publicKeyPemString;
+            string privateKeyPemString;
+
+            if (AsymmetricPanel_RsaRadioButton.Checked)
+            {
+                (publicKeyPemString, privateKeyPemString) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
+            }
+            else if (AsymmetricPanel_EcdsaRadioButton.Checked)
+            {
+                (publicKeyPemString, privateKeyPemString) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
+            }
+            else
+            {
+                return;
+            }
+
             // select save folder
             using FolderBrowserDialog folderBrowserDialog = new();
             folderBrowserDialog.ShowNewFolderButton = true;
