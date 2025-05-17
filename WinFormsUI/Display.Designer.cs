@@ -55,16 +55,9 @@
             GeneratePanel_AsymmetricRadioButton = new RadioButton();
             GeneratePanel_SymmetricRadioButton = new RadioButton();
             AsymmetricPanel = new Panel();
-            AsymmetricPanel_RefreshLabel = new Label();
-            AsymmetricPanel_InfoLabel = new Label();
+            AsymmetricPanel_DownloadButton = new Button();
             AsymmetricPanel_EcdsaRadioButton = new RadioButton();
-            AsymmetricPanel_PrivateKeyValueTextBox = new TextBox();
             AsymmetricPanel_RsaRadioButton = new RadioButton();
-            AsymmetricPanel_PublicKeyValueTextBox = new TextBox();
-            AsymmetricPanel_PrivateKeyClipboardLabel = new Label();
-            AsymmetricPanel_PublicKeyClipboardLabel = new Label();
-            AsymmetricPanel_PrivateKeyLabel = new Label();
-            AsymmetricPanel_PublicKeyLabel = new Label();
             SymmetricPanel = new Panel();
             SymmetricPanel_RefreshLabel = new Label();
             SymmetricPanel_KeyValueTextBox = new TextBox();
@@ -395,43 +388,26 @@
             // 
             // AsymmetricPanel
             // 
-            AsymmetricPanel.Controls.Add(AsymmetricPanel_RefreshLabel);
-            AsymmetricPanel.Controls.Add(AsymmetricPanel_InfoLabel);
+            AsymmetricPanel.Controls.Add(AsymmetricPanel_DownloadButton);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_EcdsaRadioButton);
-            AsymmetricPanel.Controls.Add(AsymmetricPanel_PrivateKeyValueTextBox);
             AsymmetricPanel.Controls.Add(AsymmetricPanel_RsaRadioButton);
-            AsymmetricPanel.Controls.Add(AsymmetricPanel_PublicKeyValueTextBox);
-            AsymmetricPanel.Controls.Add(AsymmetricPanel_PrivateKeyClipboardLabel);
-            AsymmetricPanel.Controls.Add(AsymmetricPanel_PublicKeyClipboardLabel);
-            AsymmetricPanel.Controls.Add(AsymmetricPanel_PrivateKeyLabel);
-            AsymmetricPanel.Controls.Add(AsymmetricPanel_PublicKeyLabel);
             AsymmetricPanel.Location = new Point(0, 82);
             AsymmetricPanel.Name = "AsymmetricPanel";
             AsymmetricPanel.Size = new Size(297, 292);
             AsymmetricPanel.TabIndex = 20;
             // 
-            // AsymmetricPanel_RefreshLabel
+            // AsymmetricPanel_DownloadButton
             // 
-            AsymmetricPanel_RefreshLabel.AutoSize = true;
-            AsymmetricPanel_RefreshLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_RefreshLabel.Location = new Point(258, 160);
-            AsymmetricPanel_RefreshLabel.Name = "AsymmetricPanel_RefreshLabel";
-            AsymmetricPanel_RefreshLabel.Size = new Size(28, 19);
-            AsymmetricPanel_RefreshLabel.TabIndex = 25;
-            AsymmetricPanel_RefreshLabel.Text = "🔄";
-            AsymmetricPanel_RefreshLabel.Click += AsymmetricPanel_RefreshLabel_Click;
-            AsymmetricPanel_RefreshLabel.MouseEnter += Label_MouseEnter;
-            AsymmetricPanel_RefreshLabel.MouseLeave += Label_MouseLeave;
-            // 
-            // AsymmetricPanel_InfoLabel
-            // 
-            AsymmetricPanel_InfoLabel.AutoSize = true;
-            AsymmetricPanel_InfoLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_InfoLabel.Location = new Point(8, 94);
-            AsymmetricPanel_InfoLabel.Name = "AsymmetricPanel_InfoLabel";
-            AsymmetricPanel_InfoLabel.Size = new Size(284, 57);
-            AsymmetricPanel_InfoLabel.TabIndex = 24;
-            AsymmetricPanel_InfoLabel.Text = "*The public key will be exported in the X.509 \r\nSubjectPublicKeyInfo format, and the private \r\nkey will be exported in the PKCS #1 format.\r\n";
+            AsymmetricPanel_DownloadButton.BackColor = SystemColors.Highlight;
+            AsymmetricPanel_DownloadButton.FlatStyle = FlatStyle.Flat;
+            AsymmetricPanel_DownloadButton.ForeColor = SystemColors.ButtonFace;
+            AsymmetricPanel_DownloadButton.Location = new Point(178, 33);
+            AsymmetricPanel_DownloadButton.Name = "AsymmetricPanel_DownloadButton";
+            AsymmetricPanel_DownloadButton.Size = new Size(86, 34);
+            AsymmetricPanel_DownloadButton.TabIndex = 24;
+            AsymmetricPanel_DownloadButton.Text = "Save";
+            AsymmetricPanel_DownloadButton.UseVisualStyleBackColor = false;
+            AsymmetricPanel_DownloadButton.Click += AsymmetricPanel_DownloadButton_Click;
             // 
             // AsymmetricPanel_EcdsaRadioButton
             // 
@@ -445,20 +421,6 @@
             AsymmetricPanel_EcdsaRadioButton.Text = "ECDSA";
             AsymmetricPanel_EcdsaRadioButton.UseVisualStyleBackColor = true;
             // 
-            // AsymmetricPanel_PrivateKeyValueTextBox
-            // 
-            AsymmetricPanel_PrivateKeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
-            AsymmetricPanel_PrivateKeyValueTextBox.BorderStyle = BorderStyle.FixedSingle;
-            AsymmetricPanel_PrivateKeyValueTextBox.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PrivateKeyValueTextBox.Location = new Point(115, 237);
-            AsymmetricPanel_PrivateKeyValueTextBox.Multiline = true;
-            AsymmetricPanel_PrivateKeyValueTextBox.Name = "AsymmetricPanel_PrivateKeyValueTextBox";
-            AsymmetricPanel_PrivateKeyValueTextBox.ReadOnly = true;
-            AsymmetricPanel_PrivateKeyValueTextBox.ScrollBars = ScrollBars.Horizontal;
-            AsymmetricPanel_PrivateKeyValueTextBox.Size = new Size(165, 41);
-            AsymmetricPanel_PrivateKeyValueTextBox.TabIndex = 19;
-            AsymmetricPanel_PrivateKeyValueTextBox.WordWrap = false;
-            // 
             // AsymmetricPanel_RsaRadioButton
             // 
             AsymmetricPanel_RsaRadioButton.AutoSize = true;
@@ -471,67 +433,6 @@
             AsymmetricPanel_RsaRadioButton.TabStop = true;
             AsymmetricPanel_RsaRadioButton.Text = "RSA";
             AsymmetricPanel_RsaRadioButton.UseVisualStyleBackColor = true;
-            AsymmetricPanel_RsaRadioButton.CheckedChanged += AsymmetricPanel_RsaRadioButton_CheckedChanged;
-            // 
-            // AsymmetricPanel_PublicKeyValueTextBox
-            // 
-            AsymmetricPanel_PublicKeyValueTextBox.BackColor = Color.FromArgb(32, 32, 32);
-            AsymmetricPanel_PublicKeyValueTextBox.BorderStyle = BorderStyle.FixedSingle;
-            AsymmetricPanel_PublicKeyValueTextBox.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PublicKeyValueTextBox.Location = new Point(115, 185);
-            AsymmetricPanel_PublicKeyValueTextBox.Multiline = true;
-            AsymmetricPanel_PublicKeyValueTextBox.Name = "AsymmetricPanel_PublicKeyValueTextBox";
-            AsymmetricPanel_PublicKeyValueTextBox.ReadOnly = true;
-            AsymmetricPanel_PublicKeyValueTextBox.ScrollBars = ScrollBars.Horizontal;
-            AsymmetricPanel_PublicKeyValueTextBox.Size = new Size(165, 41);
-            AsymmetricPanel_PublicKeyValueTextBox.TabIndex = 16;
-            AsymmetricPanel_PublicKeyValueTextBox.WordWrap = false;
-            // 
-            // AsymmetricPanel_PrivateKeyClipboardLabel
-            // 
-            AsymmetricPanel_PrivateKeyClipboardLabel.AutoSize = true;
-            AsymmetricPanel_PrivateKeyClipboardLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PrivateKeyClipboardLabel.Location = new Point(19, 240);
-            AsymmetricPanel_PrivateKeyClipboardLabel.Name = "AsymmetricPanel_PrivateKeyClipboardLabel";
-            AsymmetricPanel_PrivateKeyClipboardLabel.Size = new Size(25, 19);
-            AsymmetricPanel_PrivateKeyClipboardLabel.TabIndex = 18;
-            AsymmetricPanel_PrivateKeyClipboardLabel.Text = "📋";
-            AsymmetricPanel_PrivateKeyClipboardLabel.Click += AsymmetricPanel_PrivateKeyClipboardLabel_Click;
-            AsymmetricPanel_PrivateKeyClipboardLabel.MouseEnter += Label_MouseEnter;
-            AsymmetricPanel_PrivateKeyClipboardLabel.MouseLeave += Label_MouseLeave;
-            // 
-            // AsymmetricPanel_PublicKeyClipboardLabel
-            // 
-            AsymmetricPanel_PublicKeyClipboardLabel.AutoSize = true;
-            AsymmetricPanel_PublicKeyClipboardLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PublicKeyClipboardLabel.Location = new Point(19, 188);
-            AsymmetricPanel_PublicKeyClipboardLabel.Name = "AsymmetricPanel_PublicKeyClipboardLabel";
-            AsymmetricPanel_PublicKeyClipboardLabel.Size = new Size(25, 19);
-            AsymmetricPanel_PublicKeyClipboardLabel.TabIndex = 15;
-            AsymmetricPanel_PublicKeyClipboardLabel.Text = "📋";
-            AsymmetricPanel_PublicKeyClipboardLabel.Click += AsymmetricPanel_PublicKeyClipboardLabel_Click;
-            AsymmetricPanel_PublicKeyClipboardLabel.MouseEnter += Label_MouseEnter;
-            AsymmetricPanel_PublicKeyClipboardLabel.MouseLeave += Label_MouseLeave;
-            // 
-            // AsymmetricPanel_PrivateKeyLabel
-            // 
-            AsymmetricPanel_PrivateKeyLabel.AutoSize = true;
-            AsymmetricPanel_PrivateKeyLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PrivateKeyLabel.Location = new Point(45, 240);
-            AsymmetricPanel_PrivateKeyLabel.Name = "AsymmetricPanel_PrivateKeyLabel";
-            AsymmetricPanel_PrivateKeyLabel.Size = new Size(54, 19);
-            AsymmetricPanel_PrivateKeyLabel.TabIndex = 17;
-            AsymmetricPanel_PrivateKeyLabel.Text = "Private:";
-            // 
-            // AsymmetricPanel_PublicKeyLabel
-            // 
-            AsymmetricPanel_PublicKeyLabel.AutoSize = true;
-            AsymmetricPanel_PublicKeyLabel.ForeColor = SystemColors.ButtonFace;
-            AsymmetricPanel_PublicKeyLabel.Location = new Point(45, 188);
-            AsymmetricPanel_PublicKeyLabel.Name = "AsymmetricPanel_PublicKeyLabel";
-            AsymmetricPanel_PublicKeyLabel.Size = new Size(48, 19);
-            AsymmetricPanel_PublicKeyLabel.TabIndex = 14;
-            AsymmetricPanel_PublicKeyLabel.Text = "Public:";
             // 
             // SymmetricPanel
             // 
@@ -691,12 +592,6 @@
         private TextBox SymmetricPanel_KeyLengthTextBox;
         private RadioButton GeneratePanel_AsymmetricRadioButton;
         private RadioButton GeneratePanel_SymmetricRadioButton;
-        private TextBox AsymmetricPanel_PrivateKeyValueTextBox;
-        private Label AsymmetricPanel_PrivateKeyClipboardLabel;
-        private Label AsymmetricPanel_PrivateKeyLabel;
-        private Label AsymmetricPanel_PublicKeyLabel;
-        private TextBox AsymmetricPanel_PublicKeyValueTextBox;
-        private Label AsymmetricPanel_PublicKeyClipboardLabel;
         private Panel AsymmetricPanel;
         private Panel SymmetricPanel;
         private TextBox SymmetricPanel_KeyValueTextBox;
@@ -706,10 +601,9 @@
         private Label DeriverPanel_RefreshLabel;
         private RadioButton AsymmetricPanel_EcdsaRadioButton;
         private RadioButton AsymmetricPanel_RsaRadioButton;
-        private Label AsymmetricPanel_InfoLabel;
-        private Label AsymmetricPanel_RefreshLabel;
         private ComboBox DeriverPanel_AlgorithmComboBox;
         private NumericUpDown DeriverPanel_IterationsNumericUpDown;
         private Label DeriverPanel_IterationsLabel;
+        private Button AsymmetricPanel_DownloadButton;
     }
 }

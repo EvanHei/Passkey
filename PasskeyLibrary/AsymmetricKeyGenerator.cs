@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PasskeyLibrary;
 
@@ -13,29 +10,36 @@ namespace PasskeyLibrary;
 public static class AsymmetricKeyGenerator
 {
     /// <summary>
-    /// Generates an RSA key pair.
+    /// Generates an RSA key pair in PEM format.
     /// </summary>
-    /// <returns>A tuple containing the public and private keys as byte arrays.</returns>
-    public static (byte[] publicKey, byte[] privateKey) GenerateRsaKeyPair()
+    /// <returns>A tuple containing the public and private keys as PEM-formatted strings.</returns>
+    public static (string publicKeyPem, string privateKeyPem) GenerateRsaKeyPair()
     {
-        using RSA rsa = RSA.Create();
-        byte[] publicKey = rsa.ExportRSAPublicKey();
-        byte[] privateKey = rsa.ExportRSAPrivateKey();
+        using RSA rsa = RSA.Create(2048);
 
-        return (publicKey, privateKey);
+        byte[] publicKey = rsa.ExportSubjectPublicKeyInfo();
+        byte[] privateKey = rsa.ExportPkcs8PrivateKey();
+
+        string publicPem = $"-----BEGIN PUBLIC KEY-----\n{Convert.ToBase64String(publicKey, Base64FormattingOptions.InsertLineBreaks)}\n-----END PUBLIC KEY-----";
+        string privatePem = $"-----BEGIN PRIVATE KEY-----\n{Convert.ToBase64String(privateKey, Base64FormattingOptions.InsertLineBreaks)}\n-----END PRIVATE KEY-----";
+
+        return (publicPem, privatePem);
     }
 
     /// <summary>
-    /// Generates an ECDSA key pair.
+    /// Generates an ECDSA key pair in PEM format.
     /// </summary>
-    /// <returns>A tuple containing the public and private keys as byte arrays.</returns>
-    public static (byte[] publicKey, byte[] privateKey) GenerateEcdsaKeyPair()
+    /// <returns>A tuple containing the public and private keys as PEM-formatted strings.</returns>
+    public static (string publicKeyPem, string privateKeyPem) GenerateEcdsaKeyPair()
     {
-        using ECDsa ecdsa = ECDsa.Create();
+        using ECDsa ecdsa = ECDsa.Create(ECCurve.NamedCurves.nistP256);
 
         byte[] publicKey = ecdsa.ExportSubjectPublicKeyInfo();
         byte[] privateKey = ecdsa.ExportPkcs8PrivateKey();
 
-        return (publicKey, privateKey);
+        string publicPem = $"-----BEGIN PUBLIC KEY-----\n{Convert.ToBase64String(publicKey, Base64FormattingOptions.InsertLineBreaks)}\n-----END PUBLIC KEY-----";
+        string privatePem = $"-----BEGIN PRIVATE KEY-----\n{Convert.ToBase64String(privateKey, Base64FormattingOptions.InsertLineBreaks)}\n-----END PRIVATE KEY-----";
+
+        return (publicPem, privatePem);
     }
 }

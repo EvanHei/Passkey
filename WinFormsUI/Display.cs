@@ -8,6 +8,8 @@ namespace WinFormsUI
     {
         private bool isEyeballLabelClicked = false;
         private byte[] salt = null;
+        private string publicKeyPemString;
+        private string privateKeyPemString;
 
         public Display()
         {
@@ -301,22 +303,14 @@ namespace WinFormsUI
 
         private void AsymmetricTryComputeKey()
         {
-            (byte[] publicKeyBytes, byte[] privateKeyBytes) = (null, null);
-
             if (AsymmetricPanel_RsaRadioButton.Checked)
             {
-                (publicKeyBytes, privateKeyBytes) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
+                (publicKeyPemString, privateKeyPemString) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
             }
             else if (AsymmetricPanel_EcdsaRadioButton.Checked)
             {
-                (publicKeyBytes, privateKeyBytes) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
+                (publicKeyPemString, privateKeyPemString) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
             }
-
-            string publicKey = BitConverter.ToString(publicKeyBytes).Replace("-", "");
-            string privateKey = BitConverter.ToString(privateKeyBytes).Replace("-", "");
-
-            AsymmetricPanel_PublicKeyValueTextBox.Text = publicKey;
-            AsymmetricPanel_PrivateKeyValueTextBox.Text = privateKey;
         }
 
         private void SymmetricPanel_KeyClipboardLabel_Click(object sender, EventArgs e)
@@ -334,43 +328,24 @@ namespace WinFormsUI
             SymmetricTryComputeKey();
         }
 
-        private void AsymmetricPanel_RsaRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            if (AsymmetricPanel_RsaRadioButton.Checked)
-            {
-                AsymmetricPanel_InfoLabel.Text = "*The public key will be exported in the X.509 \r\nSubjectPublicKeyInfo format, and the private \r\nkey will be exported in the PKCS #1 format.\r\n";
-                AsymmetricTryComputeKey();
-            }
-            else if (AsymmetricPanel_EcdsaRadioButton.Checked)
-            {
-                AsymmetricPanel_InfoLabel.Text = "*The public key will be exported in the X.509 \r\nSubjectPublicKeyInfo format, and the private \r\nkey will be exported in the PKCS #8 format.\r\n";
-                AsymmetricTryComputeKey();
-            }
-        }
-
-        private void AsymmetricPanel_PublicKeyClipboardLabel_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(AsymmetricPanel_PublicKeyValueTextBox.Text))
-            {
-                return;
-            }
-
-            Clipboard.SetText(AsymmetricPanel_PublicKeyValueTextBox.Text);
-        }
-
-        private void AsymmetricPanel_PrivateKeyClipboardLabel_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(AsymmetricPanel_PrivateKeyValueTextBox.Text))
-            {
-                return;
-            }
-
-            Clipboard.SetText(AsymmetricPanel_PrivateKeyValueTextBox.Text);
-        }
-
         private void AsymmetricPanel_RefreshLabel_Click(object sender, EventArgs e)
         {
             AsymmetricTryComputeKey();
+        }
+
+        private void AsymmetricPanel_DownloadButton_Click(object sender, EventArgs e)
+        {
+            // select save folder
+            using FolderBrowserDialog folderBrowserDialog = new();
+            folderBrowserDialog.ShowNewFolderButton = true;
+            if (folderBrowserDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            // save files
+            string publicKeyPath = Path.Combine(folderBrowserDialog.SelectedPath, "public_key.pem");
+            string privateKeyPath = Path.Combine(folderBrowserDialog.SelectedPath, "private_key.pem");
+            File.WriteAllText(privateKeyPath, privateKeyPemString);
+            File.WriteAllText(publicKeyPath, publicKeyPemString);
         }
     }
 }

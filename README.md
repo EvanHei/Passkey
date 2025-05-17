@@ -76,8 +76,7 @@ The Generator panel allows creation of a symmetric or asymmetric key pair using 
 
 #### Asymmetric Panel
 
-- **🔄**: recomputes a new key pair.
-- **📋**: copies a value to the clipboard.
+- **Save**: saves the public and private keys to PEM files.
 
 <img src="./images/AsymmetricPanel.png" width="300">
 
