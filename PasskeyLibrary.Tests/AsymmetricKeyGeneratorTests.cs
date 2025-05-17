@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
+using Xunit;
 
 namespace PasskeyLibrary.Tests;
 
@@ -12,49 +11,69 @@ public class AsymmetricKeyGeneratorTests
     public void GenerateRsaKeyPair_ReturnsValidKeyPair()
     {
         // Act
-        (byte[] publicKey, byte[] privateKey) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
+        (string publicPem, string privatePem) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
 
         // Assert
-        Assert.NotNull(publicKey);
-        Assert.NotNull(privateKey);
-        Assert.True(publicKey.Length > 0, "Public key should not be empty.");
-        Assert.True(privateKey.Length > 0, "Private key should not be empty.");
+        Assert.False(string.IsNullOrWhiteSpace(publicPem), "Public key PEM should not be null or empty.");
+        Assert.False(string.IsNullOrWhiteSpace(privatePem), "Private key PEM should not be null or empty.");
+
+        byte[] publicBytes = DecodePem(publicPem, "PUBLIC KEY");
+        byte[] privateBytes = DecodePem(privatePem, "PRIVATE KEY");
+
+        Assert.NotEmpty(publicBytes);
+        Assert.NotEmpty(privateBytes);
     }
 
     [Fact]
     public void GenerateEcdsaKeyPair_ReturnsValidKeyPair()
     {
         // Act
-        (byte[] publicKey, byte[] privateKey) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
+        (string publicPem, string privatePem) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
 
         // Assert
-        Assert.NotNull(publicKey);
-        Assert.NotNull(privateKey);
-        Assert.True(publicKey.Length > 0, "Public key should not be empty.");
-        Assert.True(privateKey.Length > 0, "Private key should not be empty.");
+        Assert.False(string.IsNullOrWhiteSpace(publicPem), "Public key PEM should not be null or empty.");
+        Assert.False(string.IsNullOrWhiteSpace(privatePem), "Private key PEM should not be null or empty.");
+
+        byte[] publicBytes = DecodePem(publicPem, "PUBLIC KEY");
+        byte[] privateBytes = DecodePem(privatePem, "PRIVATE KEY");
+
+        Assert.NotEmpty(publicBytes);
+        Assert.NotEmpty(privateBytes);
     }
 
     [Fact]
     public void GenerateRsaKeyPair_KeysAreDistinct()
     {
         // Act
-        (byte[] publicKey1, byte[] privateKey1) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
-        (byte[] publicKey2, byte[] privateKey2) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
+        var (pub1, priv1) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
+        var (pub2, priv2) = AsymmetricKeyGenerator.GenerateRsaKeyPair();
 
         // Assert
-        Assert.NotEqual(publicKey1, publicKey2);
-        Assert.NotEqual(privateKey1, privateKey2);
+        Assert.NotEqual(pub1, pub2);
+        Assert.NotEqual(priv1, priv2);
     }
 
     [Fact]
     public void GenerateEcdsaKeyPair_KeysAreDistinct()
     {
         // Act
-        (byte[] publicKey1, byte[] privateKey1) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
-        (byte[] publicKey2, byte[] privateKey2) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
+        var (pub1, priv1) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
+        var (pub2, priv2) = AsymmetricKeyGenerator.GenerateEcdsaKeyPair();
 
         // Assert
-        Assert.NotEqual(publicKey1, publicKey2);
-        Assert.NotEqual(privateKey1, privateKey2);
+        Assert.NotEqual(pub1, pub2);
+        Assert.NotEqual(priv1, priv2);
+    }
+
+    private static byte[] DecodePem(string pem, string section)
+    {
+        string header = $"-----BEGIN {section}-----";
+        string footer = $"-----END {section}-----";
+
+        int start = pem.IndexOf(header) + header.Length;
+        int end = pem.IndexOf(footer, start);
+
+        string base64 = pem[start..end].Replace("\n", "").Replace("\r", "").Trim();
+        return Convert.FromBase64String(base64);
     }
 }
